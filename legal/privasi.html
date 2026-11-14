@@ -1,0 +1,75 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kebijakan Privasi – ASKA</title><style>body{font-family:system-ui,Segoe UI,Roboto,sans-serif;max-width:760px;margin:0 auto;padding:20px 16px 60px;line-height:1.6;color:#1f2937}
+h1{font-size:1.6rem;margin-bottom:.2em}h2{font-size:1.15rem;margin-top:1.8em;border-top:1px solid #e5e7eb;padding-top:1em}
+.meta{color:#6b7280;font-size:.9rem}.draft{background:#fef3c7;border:1px solid #f59e0b;padding:10px 12px;border-radius:8px;font-size:.9rem}
+ul{padding-left:1.2em}table{border-collapse:collapse;width:100%;font-size:.92rem}td,th{border:1px solid #e5e7eb;padding:6px 8px;text-align:left;vertical-align:top}
+a{color:#0b6e4f}nav a{margin-right:12px}</style></head><body>
+<nav><a href="index.html">ASKA</a><a href="privasi.html">Kebijakan Privasi</a><a href="syarat.html">Syarat Layanan</a></nav>
+<h1>Kebijakan Privasi ASKA</h1>
+<p class="meta">Berlaku sejak: 15 November 2026 · Versi 1.0</p>
+
+<h2>1. Siapa kami</h2>
+<p>ASKA (Asisten Keuangan Keluarga Aska) adalah aplikasi Android pencatatan keuangan keluarga berbasis chat asisten, diselenggarakan oleh ASKA DEVELOPER, Karanganyar, Indonesia. Kontak: <a href="mailto:owneraska.app@gmail.com">owneraska.app@gmail.com</a>.</p>
+
+<h2>2. Prinsip utama</h2>
+<ul>
+<li><b>Data keuangan Anda tersimpan di Google Drive/Google Sheets milik Anda sendiri</b>, bukan di server ASKA. File itu milik Anda dan dapat Anda buka, ubah, ekspor, atau hapus kapan saja.</li>
+<li>Server ASKA hanya menyimpan <b>data kontrol</b> (paket, kuota, undangan pasangan), bukan isi transaksi Anda.</li>
+<li>Kami tidak menjual data Anda dan tidak menampilkan iklan.</li>
+</ul>
+
+<h2>3. Data yang kami proses</h2>
+<table>
+<tr><th>Data</th><th>Di mana disimpan</th><th>Untuk apa</th></tr>
+<tr><td>Akun Google: alamat email, nama, ID akun</td><td>Firebase Authentication (Google) dan tab pengguna di server ASKA</td><td>Masuk ke aplikasi, mengenali paket dan kuota Anda</td></tr>
+<tr><td>Data keuangan: transaksi, kategori, anggaran, aset, utang, rencana alokasi, pengaturan</td><td>Spreadsheet di Google Drive Anda</td><td>Fungsi inti aplikasi. Kami tidak menyimpan salinan di server</td></tr>
+<tr><td>Foto nota</td><td>Folder "ASKA Nota" di Google Drive (milik Owner household)</td><td>Dibaca otomatis, disimpan sebagai bukti transaksi</td></tr>
+<tr><td>Data kontrol: paket dan riwayat langganan, kode aktivasi/kupon yang ditebus, kuota dan catatan pemakaian AI (waktu, jenis, status, penyedia, perkiraan biaya; tanpa isi pesan atau gambar), household (anggota, peran, undangan, hak akses kantong, ID spreadsheet), log audit tindakan penting</td><td>Spreadsheet kontrol milik penyelenggara (Google Apps Script)</td><td>Menegakkan paket dan kuota, mengelola pasangan, keamanan, mencegah penyalahgunaan, dukungan pelanggan</td></tr>
+<tr><td>Preferensi di HP (tema, bahasa, draf chat, nama asisten, cache paket)</td><td>Penyimpanan lokal aplikasi</td><td>Kenyamanan pemakaian. Token akses Google hanya di memori dan tidak disimpan</td></tr>
+</table>
+
+<h2>4. Izin Google</h2>
+<p>ASKA meminta izin <code>drive.file</code>: aplikasi hanya dapat mengakses berkas yang dibuat oleh ASKA atau yang Anda pilih sendiri (spreadsheet keuangan dan folder nota). ASKA tidak dapat membaca file Drive Anda yang lain. Penggunaan dan pemindahan informasi yang diterima dari Google API oleh ASKA mematuhi <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, termasuk ketentuan Limited Use.</p>
+
+<h2>5. Pemrosesan oleh kecerdasan buatan (AI)</h2>
+<ul>
+<li><b>Chat dengan asisten.</b> Pesan yang tidak dapat dibaca langsung oleh aplikasi dikirim ke server ASKA, lalu ke penyedia AI bersama <b>ringkasan keuangan yang dihitung aplikasi</b> (mis. total bulan ini dan bulan lalu, anggaran, beberapa transaksi terakhir, saldo kantong), bukan seluruh spreadsheet.</li>
+<li><b>Foto nota.</b> Aplikasi lebih dulu memeriksa kelayakan foto di perangkat (ML Kit). Foto yang lolos dikirim melalui server ASKA ke penyedia AI untuk dibaca (toko, tanggal, item, total). Server ASKA tidak menyimpan foto; foto disimpan di Drive Anda.</li>
+<li><b>Penyedia AI:</b> layanan AI pihak ketiga yang dipilih ASKA DEVELOPER, dengan penyedia cadangan bila penyedia utama gagal. Penyedia dapat memproses data di luar Indonesia. Untuk data pengguna nyata kami hanya memakai layanan AI berbayar dengan syarat yang tidak mengizinkan data Anda dipakai untuk melatih model. Nama penyedia yang berlaku akan dicantumkan di halaman ini.</li>
+<li>Hasil AI hanya usulan. Transaksi baru tidak disimpan sebelum Anda mengonfirmasi.</li>
+<li>Anda dapat mencatat tanpa AI lewat mode Cepat dan formulir manual.</li>
+</ul>
+
+<h2>6. Berbagi dengan pasangan</h2>
+<p>Satu paket berbayar dapat dipakai Owner dan satu pasangan. Owner membagikan spreadsheet dan folder nota ke akun Google pasangan. Pasangan dapat melihat data di file itu sesuai hak akses per kantong yang diatur Owner, dan melihat aktivitas yang dicatat bersama. Kuota bulanan dan kupon dipakai bersama. Owner dapat mencabut akses pasangan kapan saja.</p>
+
+<h2>7. Dasar dan tujuan pemrosesan</h2>
+<p>Kami memproses data untuk menjalankan layanan yang Anda minta, menegakkan paket dan kuota, menjaga keamanan, memenuhi kewajiban hukum, dan memberi dukungan, berdasarkan persetujuan Anda saat masuk dan memakai aplikasi serta perjanjian layanan.</p>
+
+<h2>8. Berbagi dengan pihak lain</h2>
+<p>Kami tidak menjual atau menyewakan data pribadi. Data hanya dapat diproses oleh penyedia infrastruktur yang kami pakai: Google (Firebase Authentication, Drive, Sheets, Apps Script) dan penyedia AI di bagian 5. Data dapat diungkapkan bila diwajibkan hukum.</p>
+
+<h2>9. Penyimpanan dan penghapusan</h2>
+<ul>
+<li>Data keuangan: tetap di Drive Anda sampai Anda menghapusnya. Menghapus aplikasi tidak menghapus file itu.</li>
+<li>Data kontrol: disimpan selama akun aktif dan sesuai kebutuhan hukum dan akuntansi, lalu dihapus atau dianonimkan.</li>
+<li><b>Permintaan hapus data kontrol</b> dapat dikirim ke <a href="mailto:owneraska.app@gmail.com">owneraska.app@gmail.com</a> dari email akun yang terdaftar; kami proses dalam 14 hari kerja. Untuk menghapus data keuangan, hapus spreadsheet dan folder nota di Google Drive Anda.</li>
+<li>Anda juga dapat mencabut akses ASKA di <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+</ul>
+
+<h2>10. Keamanan</h2>
+<p>Semua komunikasi memakai HTTPS. Kunci AI dan rahasia server tidak ada di aplikasi. Paket, kuota, dan identitas tidak dipercaya dari aplikasi, melainkan diperiksa server. Aplikasi tidak menyimpan token Google di penyimpanan permanen dan tidak mencatat data keuangan di log. Tidak ada sistem yang sepenuhnya aman; jaga akun Google Anda dengan verifikasi dua langkah.</p>
+
+<h2>11. Hak Anda</h2>
+<p>Sesuai peraturan pelindungan data pribadi yang berlaku di Indonesia (UU No. 27 Tahun 2022), Anda berhak mengakses, memperbaiki, menghapus, membatasi pemrosesan, dan menarik persetujuan atas data pribadi Anda. Ajukan lewat email di atas. Menarik persetujuan dapat membuat sebagian fitur tidak dapat digunakan.</p>
+
+<h2>12. Anak-anak</h2>
+<p>ASKA ditujukan bagi pengguna berusia 18 tahun ke atas.</p>
+
+<h2>13. Disclaimer keuangan</h2>
+<p>Informasi, level, saran, dan proyeksi di ASKA bersifat edukatif dan pencatatan pribadi. Bukan nasihat investasi, pajak, hukum, atau fatwa berlisensi.</p>
+
+<h2>14. Perubahan</h2>
+<p>Perubahan kebijakan ini akan diumumkan di halaman ini dan, bila material, di aplikasi. Tanggal berlaku ada di bagian atas.</p>
+
+<h2>15. Kontak</h2>
+<p>ASKA DEVELOPER · <a href="mailto:owneraska.app@gmail.com">owneraska.app@gmail.com</a></p></body></html>
