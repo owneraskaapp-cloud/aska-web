@@ -106,6 +106,8 @@ footer{margin-top:64px;padding:28px 0 48px;border-top:1px solid var(--line);colo
 footer a{margin:0 9px;text-decoration:none}footer a:hover{color:var(--text)}
 .disc{max-width:600px;margin:10px auto 0;font-size:12.5px}
 noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:12px 0;text-align:center}
+.announce{margin:0 0 14px;padding:10px 14px;border-radius:12px;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:14px;text-align:center}
+.announce[hidden],[hidden]{display:none!important}
 </style>
 </head>
 <body>
@@ -130,7 +132,7 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
       <div class="trust">
         <span><svg class="ic"><use href="#drive"/></svg>Data di Google Drive Anda</span>
         <span><svg class="ic"><use href="#lock"/></svg>Tanpa tautan rekening bank</span>
-        <span><svg class="ic"><use href="#shield"/></svg>Gratis 30 hari, tanpa kartu kredit</span>
+        <span data-trial-only><svg class="ic"><use href="#shield"/></svg><span data-trial-tpl="Gratis {n} hari, tanpa kartu kredit">Gratis 30 hari, tanpa kartu kredit</span></span>
       </div>
     </div>
   </div>
@@ -138,16 +140,13 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
 
 <div class="switchbar">
   <div class="wrap">
-    <div class="seg" role="group" aria-label="Pilih durasi langganan">
-      <button type="button" data-dur="m" aria-pressed="false">Bulanan</button>
-      <button type="button" data-dur="p6" aria-pressed="false">6 Bulan<small>hemat s.d. 20%</small></button>
-      <button type="button" data-dur="p12" aria-pressed="true">12 Bulan<small>hemat s.d. 40%</small></button>
-    </div>
+    <div class="seg" id="seg" role="group" aria-label="Pilih durasi langganan"></div>
   </div>
 </div>
 
 <main class="wrap">
-<noscript><p>Aktifkan JavaScript untuk melihat harga, atau tanyakan harga lewat owneraska.app@gmail.com.</p></noscript>
+<div class="announce" data-announce hidden></div>
+<noscript><p>Aktifkan JavaScript untuk melihat harga, atau tanyakan harga lewat <a href="mailto:owneraska.app@gmail.com">owneraska.app@gmail.com</a>.</p></noscript>
 
 <!-- ============ PASANGAN 1: STARTER vs BASIC ============ -->
 <section class="sec" id="mulai" aria-labelledby="h-mulai">
@@ -163,11 +162,11 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
       <p class="vs" data-vs></p>
       <ul class="hl">
         <li><svg class="ic"><use href="#ck"/></svg>Catat lewat chat dan formulir (1 akun)</li>
-        <li><svg class="ic"><use href="#ck"/></svg>30 chat AI dan 3 foto nota per bulan</li>
+        <li><svg class="ic"><use href="#ck"/></svg><span><span data-q="STARTER:aiMonthly">30</span> chat AI dan <span data-q="STARTER:attachMonthly">3</span> foto nota per bulan</span></li>
         <li><svg class="ic"><use href="#ck"/></svg>Anggaran dan laporan bulanan dasar</li>
       </ul>
       <a class="cta alt" data-cta href="#">Pilih Starter</a>
-      <span class="sub-cta">atau <a href="unduh.html">coba gratis 30 hari</a>: otomatis saat pertama masuk, tanpa kode</span>
+      <span class="sub-cta" data-trial-only>atau <a href="unduh.html" data-trial-tpl="coba gratis {n} hari">coba gratis 30 hari</a>: otomatis saat pertama masuk, tanpa kode</span>
     </article>
 
     <article class="plan pick" data-plan="basic">
@@ -180,14 +179,14 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
       <p class="vs" data-vs></p>
       <ul class="hl">
         <li><svg class="ic"><use href="#ck"/></svg><span><b>Akun pasangan</b>: 2 akun, 1 spreadsheet bersama</span></li>
-        <li><svg class="ic"><use href="#ck"/></svg>120 chat AI dan 20 foto nota per bulan</li>
+        <li><svg class="ic"><use href="#ck"/></svg><span><span data-q="BASIC:aiMonthly">120</span> chat AI dan <span data-q="BASIC:attachMonthly">20</span> foto nota per bulan</span></li>
         <li><svg class="ic"><use href="#ck"/></svg>Aset, utang, cicilan, dan kekayaan bersih</li>
         <li><svg class="ic"><use href="#ck"/></svg>Asisten bernama sendiri dan ekspor CSV</li>
       </ul>
       <a class="cta" data-cta href="#">Pilih Basic</a>
     </article>
   </div>
-  <p class="bridge">Hanya <b data-bridge="starter-basic"></b> untuk naik ke Basic: akun pasangan, 4× kuota chat, dan 6× foto nota.</p>
+  <p class="bridge">Hanya <b data-bridge="starter-basic"></b> untuk naik ke Basic: akun pasangan, <span data-ratio="BASIC:STARTER:aiMonthly">4</span>× kuota chat, dan <span data-ratio="BASIC:STARTER:attachMonthly">6</span>× foto nota.</p>
 
   <details class="detail" open>
     <summary>Detail fitur: Starter vs Basic</summary>
@@ -196,8 +195,8 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
       <tbody>
         <tr class="grp"><th colspan="3">Chat dan pencatatan</th></tr>
         <tr><td>Catat lewat chat (beberapa transaksi sekaligus)</td><td class="yes"><svg class="ic"><use href="#ck"/></svg></td><td class="hi yes"><svg class="ic"><use href="#ck"/></svg></td></tr>
-        <tr><td>Chat AI per bulan</td><td>30<small>maks 3 per hari</small></td><td class="hi"><b>120</b><small>maks 6 per hari per orang</small></td></tr>
-        <tr><td>Foto nota per bulan</td><td>3</td><td class="hi"><b>20</b></td></tr>
+        <tr><td>Chat AI per bulan</td><td><span data-q="STARTER:aiMonthly">30</span><small>maks <span data-q="STARTER:aiDaily">3</span> per hari</small></td><td class="hi"><b><span data-q="BASIC:aiMonthly">120</span></b><small>maks <span data-q="BASIC:aiDaily">6</span> per hari per orang</small></td></tr>
+        <tr><td>Foto nota per bulan</td><td><span data-q="STARTER:attachMonthly">3</span></td><td class="hi"><b><span data-q="BASIC:attachMonthly">20</span></b></td></tr>
         <tr><td>Asisten dengan nama sendiri</td><td class="no"><svg class="ic"><use href="#dash"/></svg></td><td class="hi yes"><svg class="ic"><use href="#ck"/></svg></td></tr>
         <tr class="grp"><th colspan="3">Anggaran dan laporan</th></tr>
         <tr><td>Anggaran bulanan dan peringatan 80%</td><td>Dasar</td><td class="hi"><b>Lengkap</b></td></tr>
@@ -235,7 +234,7 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
         <li><svg class="ic"><use href="#ck"/></svg>Semua fitur Basic</li>
         <li><svg class="ic"><use href="#ck"/></svg>Portofolio: emas, reksa dana, saham, dan kripto</li>
         <li><svg class="ic"><use href="#ck"/></svg>FIRE rinci dan rencana DCA bulanan</li>
-        <li><svg class="ic"><use href="#ck"/></svg>300 chat AI tanpa batas harian, 60 foto nota</li>
+        <li><svg class="ic"><use href="#ck"/></svg><span><span data-q="PRO:aiMonthly">300</span> chat AI tanpa batas harian, <span data-q="PRO:attachMonthly">60</span> foto nota</span></li>
       </ul>
       <a class="cta alt" data-cta href="#">Daftar tunggu Pro</a>
     </article>
@@ -253,7 +252,7 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
         <li><svg class="ic"><use href="#ck"/></svg><span><b>Hingga 2 akun Pemantau</b>: anak, ahli waris, atau konsultan (baca-saja)</span></li>
         <li><svg class="ic"><use href="#ck"/></svg>Jurnal Trading dan proyeksi pensiun</li>
         <li><svg class="ic"><use href="#ck"/></svg>Peta Warisan, Siap SPT, dan Brankas dokumen</li>
-        <li><svg class="ic"><use href="#ck"/></svg>Penasihat AI, 500 chat AI, 100 foto nota</li>
+        <li><svg class="ic"><use href="#ck"/></svg><span>Penasihat AI, <span data-q="ELITE:aiMonthly">500</span> chat AI, <span data-q="ELITE:attachMonthly">100</span> foto nota</span></li>
       </ul>
       <a class="cta" data-cta href="#">Daftar tunggu Elite</a>
     </article>
@@ -284,8 +283,8 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
         <tr><td>Siap SPT: rekap harta dan kewajiban<span class="soon-tag">menyusul</span></td><td class="no"><svg class="ic"><use href="#dash"/></svg></td><td class="hi yes"><svg class="ic"><use href="#ck"/></svg></td></tr>
         <tr><td>Brankas dokumen dan pengingat jatuh tempo<span class="soon-tag">menyusul</span></td><td class="no"><svg class="ic"><use href="#dash"/></svg></td><td class="hi yes"><svg class="ic"><use href="#ck"/></svg></td></tr>
         <tr class="grp"><th colspan="3">Kuota dan dukungan</th></tr>
-        <tr><td>Chat AI per bulan</td><td>300<small>tanpa batas harian</small></td><td class="hi"><b>500</b><small>tanpa batas harian</small></td></tr>
-        <tr><td>Foto nota per bulan</td><td>60</td><td class="hi"><b>100</b></td></tr>
+        <tr><td>Chat AI per bulan</td><td><span data-q="PRO:aiMonthly">300</span><small>tanpa batas harian</small></td><td class="hi"><b><span data-q="ELITE:aiMonthly">500</span></b><small>tanpa batas harian</small></td></tr>
+        <tr><td>Foto nota per bulan</td><td><span data-q="PRO:attachMonthly">60</span></td><td class="hi"><b><span data-q="ELITE:attachMonthly">100</span></b></td></tr>
         <tr><td>Dukungan prioritas (balasan maks 24 jam)</td><td class="no"><svg class="ic"><use href="#dash"/></svg></td><td class="hi yes"><svg class="ic"><use href="#ck"/></svg></td></tr>
       </tbody>
     </table>
@@ -305,9 +304,9 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
 <section class="sec" id="faq" aria-labelledby="h-faq">
   <div class="sec-h"><h2 id="h-faq">Pertanyaan umum</h2></div>
   <div class="faq">
-    <details><summary>Apa bedanya Starter dan Basic?</summary><p>Starter untuk satu orang. Basic menambah akun pasangan yang berbagi satu spreadsheet, kuota chat 4 kali lebih besar, foto nota 6 kali lebih banyak, serta aset, utang, dan ekspor CSV.</p></details>
+    <details><summary>Apa bedanya Starter dan Basic?</summary><p>Starter untuk satu orang. Basic menambah akun pasangan yang berbagi satu spreadsheet, kuota chat <span data-ratio="BASIC:STARTER:aiMonthly">4</span> kali lebih besar, foto nota <span data-ratio="BASIC:STARTER:attachMonthly">6</span> kali lebih banyak, serta aset, utang, dan ekspor CSV.</p></details>
     <details><summary>Apakah data saya aman?</summary><p>Data keuangan tersimpan di Google Drive dan Sheets milik Anda sendiri, bukan di server kami. ASKA hanya meminta izin ke berkas yang dibuat atau dipilih lewat aplikasi. Lihat <a href="privasi.html">Kebijakan Privasi</a>.</p></details>
-    <details><summary>Apakah ada masa gratis?</summary><p>Ada. Setiap akun Google mendapat Starter gratis 30 hari sejak pertama masuk ASKA, otomatis tanpa kode dan tanpa kartu kredit, satu kali per akun. Membeli Starter saat masa gratis masih berjalan tidak menghilangkan sisa hari gratis.</p></details>
+    <details data-trial-only><summary>Apakah ada masa gratis?</summary><p>Ada. Setiap akun Google mendapat Starter gratis <span data-trial>30</span> hari sejak pertama masuk ASKA, otomatis tanpa kode dan tanpa kartu kredit, satu kali per akun. Membeli Starter saat masa gratis masih berjalan tidak menghilangkan sisa hari gratis.</p></details>
     <details><summary>Bagaimana jika masa gratis atau paket saya habis?</summary><p>Data Anda tidak dihapus. ASKA menjadi hanya-lihat: riwayat, laporan, dan saldo tetap bisa dibuka, tetapi mencatat, chat AI, dan foto nota terkunci sampai Anda membeli paket (mulai Starter). Pasangan di paket Basic ke atas tetap bisa membaca selama masa tenggang 7 hari.</p></details>
     <details><summary>Bisakah naik paket di tengah jalan?</summary><p>Bisa. Sisa hari paket lama dikonversi menjadi hari paket baru, sehingga tidak ada yang terbuang.</p></details>
     <details><summary>Bagaimana jika saya berubah pikiran?</summary><p>Refund penuh bila kode aktivasi belum ditebus dan diminta dalam 7 hari sejak pembelian. Rincian ada di <a href="syarat.html">Syarat Layanan</a>.</p></details>
@@ -318,95 +317,125 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
 <footer>
   <div class="wrap">
     <p><a href="index.html">Beranda</a><a href="unduh.html">Unduh</a><a href="privasi.html">Kebijakan Privasi</a><a href="syarat.html">Syarat Layanan</a></p>
-    <p style="margin-top:8px">Bantuan dan pemesanan: <a href="mailto:owneraska.app@gmail.com">owneraska.app@gmail.com</a></p>
+    <p style="margin-top:8px">Bantuan dan pemesanan: <a href="mailto:owneraska.app@gmail.com" data-contact>owneraska.app@gmail.com</a></p>
     <p class="disc">Harga dalam rupiah dan dapat berubah; paket yang sudah Anda bayar tidak terpengaruh sampai masa berlakunya habis. Promo bersifat terbatas. ASKA adalah alat bantu pencatatan dan edukasi, bukan penasihat investasi, pajak, atau hukum berlisensi.</p>
     <p class="disc">© 2026 ASKA DEVELOPER, Karanganyar, Indonesia</p>
   </div>
 </footer>
 
+<script src="site.js"></script>
 <script>
 (function () {
-  // Ganti nilai ini bila nanti pemesanan pindah ke WhatsApp atau formulir.
-  var CONTACT = 'owneraska.app@gmail.com';
-
-  // Harga dalam rupiah. "n" = harga normal (coret), hanya Starter dan Basic.
-  var PLANS = {
-    starter: { name: 'Starter', m: 11900, p6: 56000, p12: 86000, n: { m: 14900, p6: 69000, p12: 109000 }, cta: 'Pilih' },
-    basic:   { name: 'Basic',   m: 16900, p6: 86000, p12: 136000, n: { m: 22900, p6: 109000, p12: 179000 }, cta: 'Pilih' },
-    pro:     { name: 'Pro',     m: 51900, p6: 246000, p12: 396000, cta: 'Daftar tunggu' },
-    elite:   { name: 'Elite',   m: 61900, p6: 296000, p12: 446000, cta: 'Daftar tunggu' }
+  /* Harga, kuota, kontak, dan masa gratis dibaca dari database lewat site.js (diatur di admin › Paket › Harga jual).
+     Isi di bawah hanya CADANGAN bila server dan salinan di perangkat sama-sama tidak tersedia; tidak perlu diubah saat harga berubah. */
+  var FALLBACK = {
+    ok: true, contact: 'owneraska.app@gmail.com', announce: '', trialDays: 30, defaultDays: 365,
+    durations: [{ days: 30, months: 1, label: '1 bulan', name: 'Bulanan' }, { days: 180, months: 6, label: '6 bulan', name: '6 bulan' }, { days: 365, months: 12, label: '12 bulan', name: '12 bulan' }],
+    plans: {
+      STARTER: { name: 'Starter', status: 'open', ribbon: '', prices: { 30: { pay: 11900, list: 14900 }, 180: { pay: 56000, list: 69000 }, 365: { pay: 86000, list: 109000 } }, limits: { aiMonthly: 30, aiDaily: 3, attachMonthly: 3 } },
+      BASIC: { name: 'Basic', status: 'open', ribbon: 'Paling populer', prices: { 30: { pay: 16900, list: 22900 }, 180: { pay: 86000, list: 109000 }, 365: { pay: 136000, list: 179000 } }, limits: { aiMonthly: 120, aiDaily: 6, attachMonthly: 20 } },
+      PRO: { name: 'Pro', status: 'soon', ribbon: 'Segera hadir', prices: { 30: { pay: 51900, list: 0 }, 180: { pay: 246000, list: 0 }, 365: { pay: 396000, list: 0 } }, limits: { aiMonthly: 300, aiDaily: 0, attachMonthly: 60 } },
+      ELITE: { name: 'Elite', status: 'soon', ribbon: 'Nilai terbaik · Segera hadir', prices: { 30: { pay: 61900, list: 0 }, 180: { pay: 296000, list: 0 }, 365: { pay: 446000, list: 0 } }, limits: { aiMonthly: 500, aiDaily: 0, attachMonthly: 100 } }
+    }
   };
-  var DUR = {
-    m:   { n: 1,  label: '1 bulan',  name: 'Bulanan' },
-    p6:  { n: 6,  label: '6 bulan',  name: '6 bulan' },
-    p12: { n: 12, label: '12 bulan', name: '12 bulan' }
-  };
-  var state = 'p12';
+  var D = FALLBACK, state = D.defaultDays;
 
   function fmt(x) { return String(Math.round(x)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
   function rp(x) { return 'Rp' + fmt(x); }
   function q(root, sel) { return root.querySelector(sel); }
-  function mail(subject, body) {
-    return 'mailto:' + CONTACT + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  function mail(subject, body) { return 'mailto:' + D.contact + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body); }
+  function dur(days) { for (var i = 0; i < D.durations.length; i++) if (D.durations[i].days === days) return D.durations[i]; return null; }
+  function monthlyPrice(p) { // harga paket untuk 1 bulan (durasi ≤ 45 hari), bila ada
+    for (var i = 0; i < D.durations.length; i++) if (D.durations[i].months === 1 && p.prices[D.durations[i].days]) return p.prices[D.durations[i].days].pay;
+    return 0;
   }
 
   function renderPlan(card) {
-    var key = card.getAttribute('data-plan');
-    var p = PLANS[key], d = DUR[state], total = p[state], n = d.n;
-    q(card, '[data-amt]').textContent = fmt(total / n);
-    var was = q(card, '[data-was]'), save = q(card, '[data-save]'), vs = q(card, '[data-vs]');
-    if (p.n) {
-      var normal = p.n[state];
-      was.textContent = rp(normal / n);
-      save.textContent = 'Promo -' + Math.round((1 - total / normal) * 100) + '%';
-      save.style.display = '';
+    var p = D.plans[card.getAttribute('data-plan').toUpperCase()], d = dur(state);
+    if (!p || !d) return;
+    var price = p.prices[state], n = d.months;
+    var rb = q(card, '.ribbon');
+    if (rb) {
+      rb.textContent = p.ribbon || '.';
+      rb.classList.toggle('ghost', !p.ribbon);
+      rb.classList.toggle('soon', p.status === 'soon' && !card.classList.contains('pick'));
+    }
+    var amt = q(card, '[data-amt]'), was = q(card, '[data-was]'), save = q(card, '[data-save]'), vs = q(card, '[data-vs]'), tot = q(card, '[data-total]'), cta = q(card, '[data-cta]');
+    if (!price) { // paket ini tidak dijual untuk durasi terpilih
+      amt.textContent = '–'; was.textContent = ''; save.style.display = 'none'; vs.textContent = ''; tot.textContent = 'Belum tersedia untuk durasi ini';
+      cta.textContent = 'Belum tersedia'; cta.removeAttribute('href'); return;
+    }
+    var total = price.pay;
+    amt.textContent = fmt(total / n);
+    if (price.list) {
+      was.textContent = rp(price.list / n);
+      save.textContent = 'Promo -' + Math.round((1 - total / price.list) * 100) + '%'; save.style.display = '';
+      save.classList.add('promo');
     } else {
       was.textContent = '';
-      var pct = state === 'm' ? 0 : Math.round((1 - total / (p.m * n)) * 100);
-      save.textContent = pct ? 'Hemat ' + pct + '%' : '';
-      save.style.display = pct ? '' : 'none';
+      var mo = monthlyPrice(p), pct = (n > 1 && mo) ? Math.round((1 - total / (mo * n)) * 100) : 0;
+      save.textContent = pct > 0 ? 'Hemat ' + pct + '%' : ''; save.style.display = pct > 0 ? '' : 'none';
+      save.classList.remove('promo');
     }
-    q(card, '[data-total]').textContent = n === 1 ? 'Dibayar ' + rp(total) + ' per bulan' : 'Dibayar ' + rp(total) + ' untuk ' + d.label;
-    vs.textContent = n === 1 ? '' : 'Hemat ' + rp(p.m * n - total) + ' dibanding bayar bulanan';
-    var cta = q(card, '[data-cta]');
-    if (p.cta === 'Pilih') {
+    tot.textContent = n === 1 ? 'Dibayar ' + rp(total) + ' per bulan' : 'Dibayar ' + rp(total) + ' untuk ' + d.label;
+    var mo2 = monthlyPrice(p);
+    vs.textContent = (n > 1 && mo2 && mo2 * n > total) ? 'Hemat ' + rp(mo2 * n - total) + ' dibanding bayar bulanan' : '';
+    cta.removeAttribute('class'); cta.className = 'cta' + (card.classList.contains('pick') ? '' : ' alt');
+    if (p.status === 'open') {
       cta.textContent = 'Pilih ' + p.name + ' · ' + d.name;
       cta.href = mail('Pesan ASKA ' + p.name + ' - ' + d.label,
         'Halo, saya ingin memesan paket ' + p.name + ' (' + d.label + ') seharga ' + rp(total) + '.\n\nNama:\nEmail Google yang dipakai di ASKA:\n');
     } else {
-      cta.textContent = p.cta + ' ' + p.name;
-      cta.href = mail('Daftar tunggu ASKA ' + p.name,
-        'Halo, saya ingin diberi tahu saat paket ' + p.name + ' tersedia.\n\nNama:\nEmail:\n');
+      cta.textContent = 'Daftar tunggu ' + p.name;
+      cta.href = mail('Daftar tunggu ASKA ' + p.name, 'Halo, saya ingin diberi tahu saat paket ' + p.name + ' tersedia.\n\nNama:\nEmail:\n');
     }
   }
 
   function bridge(a, b) {
-    var n = DUR[state].n;
-    return '+' + rp((PLANS[b][state] - PLANS[a][state]) / n) + '/bulan';
+    var pa = D.plans[a], pb = D.plans[b], n = (dur(state) || {}).months || 1;
+    if (!pa || !pb || !pa.prices[state] || !pb.prices[state]) return null;
+    return '+' + rp((pb.prices[state].pay - pa.prices[state].pay) / n) + '/bulan';
+  }
+
+  function buildSeg() {
+    var seg = document.getElementById('seg'), html = '';
+    for (var i = 0; i < D.durations.length; i++) {
+      var d = D.durations[i], best = 0;
+      if (d.months > 1) for (var k in D.plans) { var p = D.plans[k], mo = monthlyPrice(p), pr = p.prices[d.days]; if (mo && pr) best = Math.max(best, Math.round((1 - pr.pay / (mo * d.months)) * 100)); }
+      html += '<button type="button" data-dur="' + d.days + '" aria-pressed="' + (d.days === state) + '">' + d.name + (best > 0 ? '<small>hemat s.d. ' + best + '%</small>' : '') + '</button>';
+    }
+    seg.innerHTML = html;
   }
 
   function render() {
+    if (!dur(state)) state = D.defaultDays;
+    if (!dur(state) && D.durations.length) state = D.durations[D.durations.length - 1].days;
+    buildSeg();
     var cards = document.querySelectorAll('[data-plan]');
     for (var i = 0; i < cards.length; i++) renderPlan(cards[i]);
     var br = document.querySelectorAll('[data-bridge]');
     for (var j = 0; j < br.length; j++) {
-      var k = br[j].getAttribute('data-bridge');
-      br[j].textContent = k === 'starter-basic' ? bridge('starter', 'basic') : bridge('pro', 'elite');
+      var k = br[j].getAttribute('data-bridge'), t = k === 'starter-basic' ? bridge('STARTER', 'BASIC') : bridge('PRO', 'ELITE');
+      var line = br[j].parentNode;
+      if (t) { br[j].textContent = t; line.hidden = false; } else line.hidden = true;
     }
-    var btns = document.querySelectorAll('.seg button');
-    for (var b = 0; b < btns.length; b++) {
-      btns[b].setAttribute('aria-pressed', btns[b].getAttribute('data-dur') === state ? 'true' : 'false');
-    }
+    if (window.AskaSite) window.AskaSite.fill(D);
   }
 
-  var segBtns = document.querySelectorAll('.seg button');
-  for (var i = 0; i < segBtns.length; i++) {
-    segBtns[i].addEventListener('click', function () {
-      state = this.getAttribute('data-dur');
-      render();
-    });
-  }
-  render();
+  document.getElementById('seg').addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('button[data-dur]') : null;
+    if (!b) return;
+    state = parseInt(b.getAttribute('data-dur'), 10);
+    render();
+  });
+
+  render(); // langsung tampil dari cadangan, lalu diperbarui dari server
+  if (window.AskaSite) window.AskaSite.get(function (d) {
+    if (!d) return;
+    var keep = state, first = D === FALLBACK;
+    D = d; state = first ? d.defaultDays : keep;
+    render();
+  });
 })();
 </script>
 </body>
