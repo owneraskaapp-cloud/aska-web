@@ -130,7 +130,7 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
       <div class="trust">
         <span><svg class="ic"><use href="#drive"/></svg>Data di Google Drive Anda</span>
         <span><svg class="ic"><use href="#lock"/></svg>Tanpa tautan rekening bank</span>
-        <span><svg class="ic"><use href="#shield"/></svg>Refund 7 hari bila kode belum dipakai</span>
+        <span><svg class="ic"><use href="#shield"/></svg>Gratis 30 hari, tanpa kartu kredit</span>
       </div>
     </div>
   </div>
@@ -167,7 +167,7 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
         <li><svg class="ic"><use href="#ck"/></svg>Anggaran dan laporan bulanan dasar</li>
       </ul>
       <a class="cta alt" data-cta href="#">Pilih Starter</a>
-      <span class="sub-cta">atau <a data-trial href="#">minta kode gratis 30 hari</a> (kuota terbatas)</span>
+      <span class="sub-cta">atau <a href="unduh.html">coba gratis 30 hari</a>: otomatis saat pertama masuk, tanpa kode</span>
     </article>
 
     <article class="plan pick" data-plan="basic">
@@ -307,7 +307,8 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
   <div class="faq">
     <details><summary>Apa bedanya Starter dan Basic?</summary><p>Starter untuk satu orang. Basic menambah akun pasangan yang berbagi satu spreadsheet, kuota chat 4 kali lebih besar, foto nota 6 kali lebih banyak, serta aset, utang, dan ekspor CSV.</p></details>
     <details><summary>Apakah data saya aman?</summary><p>Data keuangan tersimpan di Google Drive dan Sheets milik Anda sendiri, bukan di server kami. ASKA hanya meminta izin ke berkas yang dibuat atau dipilih lewat aplikasi. Lihat <a href="privasi.html">Kebijakan Privasi</a>.</p></details>
-    <details><summary>Bagaimana jika paket saya habis?</summary><p>Data Anda tidak dihapus. Fitur berbayar menjadi baca-saja atau terkunci sampai Anda memperpanjang. Pasangan tetap bisa membaca selama masa tenggang 7 hari.</p></details>
+    <details><summary>Apakah ada masa gratis?</summary><p>Ada. Setiap akun Google mendapat Starter gratis 30 hari sejak pertama masuk ASKA, otomatis tanpa kode dan tanpa kartu kredit, satu kali per akun. Membeli Starter saat masa gratis masih berjalan tidak menghilangkan sisa hari gratis.</p></details>
+    <details><summary>Bagaimana jika masa gratis atau paket saya habis?</summary><p>Data Anda tidak dihapus. ASKA menjadi hanya-lihat: riwayat, laporan, dan saldo tetap bisa dibuka, tetapi mencatat, chat AI, dan foto nota terkunci sampai Anda membeli paket (mulai Starter). Pasangan di paket Basic ke atas tetap bisa membaca selama masa tenggang 7 hari.</p></details>
     <details><summary>Bisakah naik paket di tengah jalan?</summary><p>Bisa. Sisa hari paket lama dikonversi menjadi hari paket baru, sehingga tidak ada yang terbuang.</p></details>
     <details><summary>Bagaimana jika saya berubah pikiran?</summary><p>Refund penuh bila kode aktivasi belum ditebus dan diminta dalam 7 hari sejak pembelian. Rincian ada di <a href="syarat.html">Syarat Layanan</a>.</p></details>
   </div>
@@ -376,11 +377,6 @@ noscript p{background:var(--accent-soft);padding:12px;border-radius:12px;margin:
       cta.textContent = p.cta + ' ' + p.name;
       cta.href = mail('Daftar tunggu ASKA ' + p.name,
         'Halo, saya ingin diberi tahu saat paket ' + p.name + ' tersedia.\n\nNama:\nEmail:\n');
-    }
-    var trial = q(card, '[data-trial]');
-    if (trial) {
-      trial.href = mail('Minta kode gratis 30 hari ASKA Starter',
-        'Halo, saya ingin mencoba ASKA Starter gratis 30 hari.\n\nNama:\nEmail Google yang dipakai di ASKA:\n');
     }
   }
 
